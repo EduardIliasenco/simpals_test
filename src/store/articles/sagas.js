@@ -19,7 +19,7 @@ const splitTags = tags =>
 export function* loadArticles() {
   let { entities } = loadState('articles')
 
-  if (!isArray(entities)) {
+  if (!isArray(entities) || (isArray(entities) && !entities.length)) {
     saveState({ entities: [...articles] }, 'articles')
     entities = [...articles]
   }
