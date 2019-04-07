@@ -2,6 +2,7 @@
 import React, { PureComponent } from 'react'
 import { connect } from 'react-redux'
 import styled from 'styled-components'
+import { palette } from 'styled-theme'
 import nanoid from 'nanoid'
 import {
   getInputError,
@@ -29,17 +30,17 @@ const StyledInput = styled.input.attrs({ type: 'text' })`
   width: 100%;
   height: 34px;
   padding: 0 8px 1px;
-  border: 1px solid ${props => props.error ? 'red' : '#ccc'};
+  border: 1px solid ${props => props.error ? palette(2) : '#ccc'};
   border-radius: 8px;
   background: transparent;
   font-family: inherit;
-  color: rgb(20, 20, 20);
-  box-shadow: 0 0 0 ${props => props.error ? 'red' : 'rgba(0, 0, 0, .075)'};
+  color: ${palette(1)};
+  box-shadow: 0 0 0 ${props => props.error ? palette(2) : 'rgba(0, 0, 0, .075)'};
   transition: box-shadow 0.3s ease;
   box-sizing: border-box;
   
   &:focus {
-    box-shadow: 0 0 5px ${props => props.error ? 'red' : 'rgba(0, 0, 0, .075)'};
+    box-shadow: 0 0 5px ${props => props.error ? palette(2) : palette(0)};
   }
 `
 
@@ -53,6 +54,7 @@ type Props = {
   value?: string,
   label?: string,
   error?: boolean,
+  palette: boolean,
   disabled: boolean,
   formName?: string,
   placeholder?: string,
@@ -69,6 +71,7 @@ export class InputComponent extends PureComponent<Props> {
     placeholder: '',
     type: 'text',
     value: '',
+    palette: 'normalInput',
   }
 
   componentDidMount() {
@@ -105,6 +108,7 @@ export class InputComponent extends PureComponent<Props> {
       disabled,
       placeholder,
       type = 'text',
+      palette,
     } = this.props
     const fieldError = error ? error.error : ''
 
@@ -124,6 +128,7 @@ export class InputComponent extends PureComponent<Props> {
           disabled={disabled}
           onChange={onChange}
           placeholder={placeholder}
+          palette={palette}
         />
       </StyledWrapper>
     )
