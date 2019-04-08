@@ -1,12 +1,15 @@
-import { put, call, takeEvery, select } from 'redux-saga/effects'
+import { put, takeEvery, select } from 'redux-saga/effects'
+import { createBrowserHistory } from 'history'
 import isArray from 'lodash/isArray'
 import isObject from 'lodash/isObject'
 import { loadState, saveState } from 'utils/localStorage'
 import * as db from 'db/posts.json'
 import * as actions from 'store/actionTypes'
-import { setFormFieldError } from 'store/actions'
+import { setFormFieldError, clearForm } from 'store/actions'
 import { getField } from 'store/forms/selectors'
+import routes from 'routes'
 import { createValidator, required } from 'services/validation'
+import { customHistory } from 'index'
 import { getArticles, getArticlesId } from './selectors'
 import { setArticles, articleAdd } from './actions'
 
@@ -51,6 +54,8 @@ export function* saveArticle({ payload }) {
       yield put(articleAdd({ id, ...article, tags: splitTags(article.tags) }))
       const articles = yield select(getArticles)
       saveState({ entities: [...articles] })
+      yield put(clearForm(formName))
+      yield customHistory.push(routes.articles)
     }
   }
 }

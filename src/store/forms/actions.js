@@ -1,8 +1,9 @@
 import {
+  CLEAR_FORM,
   FORM_FIELD_INIT,
   FORM_FIELD_ERROR,
   FORM_FIELD_CHANGE,
-} from 'store/actionTypes';
+} from 'store/actionTypes'
 
 export const formFieldChange = (value, name, formName) => ({
   type: FORM_FIELD_CHANGE,
@@ -28,5 +29,13 @@ export function setFormFieldError(error: {} = {}, formName, name) {
       name,
       error,
     },
+  }
+}
+
+
+export function clearForm(formName) {
+  return {
+    type: CLEAR_FORM,
+    payload: { formName },
   }
 }

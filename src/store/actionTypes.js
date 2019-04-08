@@ -2,7 +2,8 @@
 export const INIT = 'INIT'
 
 // Forms
-export const FORM_FIELD_CHANGE = 'FORM_FIELD_CHANGE '
+export const CLEAR_FORM = 'CLEAR_FORM'
+export const FORM_FIELD_CHANGE = 'FORM_FIELD_CHANGE'
 export const FORM_FIELD_INIT = 'FORM_FIELD_INIT'
 export const FORM_FIELD_ERROR = 'FORM_FIELD_ERROR'
 export const FORM_FIELD_DISABLED = 'FORM_FIELD_DISABLED'

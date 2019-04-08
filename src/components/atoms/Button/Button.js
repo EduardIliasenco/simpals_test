@@ -16,9 +16,10 @@ const StyledButton = styled.button`
   box-shadow: none;
   font-family: inherit;
   font-weight: bold;
+  cursor: pointer;
   
   &:hover {
-    ${props => props.theme ? 'red' : 'darkslateblue'};
+    ${props => props.theme ? 'rgb(222,139,130)' : 'darkslateblue'};
   }
 `
 

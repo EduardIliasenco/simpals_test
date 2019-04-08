@@ -45,7 +45,7 @@ const StyledInput = styled.input.attrs({ type: 'text' })`
 `
 
 const StyledLabel = styled.label`
-  color: ${props => props.error ? 'red' : 'rgb(20, 20, 20)'};
+  color: ${props => props.error ? 'rgb(222,139,130)' : 'rgb(20, 20, 20)'};
 `
 
 type Props = {

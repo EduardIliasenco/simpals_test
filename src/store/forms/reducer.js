@@ -1,4 +1,5 @@
 import {
+  CLEAR_FORM,
   FORM_FIELD_CHANGE,
   FORM_FIELD_INIT,
   FORM_FIELD_ERROR,
@@ -11,6 +12,12 @@ import { checkNested } from 'utils/checkNested'
 export const initialState = {}
 
 export const handlers = {
+  [CLEAR_FORM](state, { formName }) {
+    return {
+      ...state,
+      [formName]: {},
+    }
+  },
   [FORM_FIELD_CHANGE]: (state, { formName, name, value }) => ({
     ...state,
     [formName]: {
